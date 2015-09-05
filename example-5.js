@@ -2,6 +2,11 @@
  * http://www.robodesign.ro
  https://dev.opera.com/articles/html5-canvas-painting/
  */
+//TODO: browse button to upload custom pic
+//custom thickness of line
+//custom color of line
+//save to DB
+
 
 // Keep everything in anonymous function, called on window load.
 if(window.addEventListener) {
@@ -55,8 +60,8 @@ window.addEventListener('load', function () {
     };
     context = canvas.getContext('2d');
     contexto.drawImage(img,0,0);
-    contexto.fillStyle = "yellow";
-    // Get the tool select input.
+    context.lineWidth = 5;
+   // Get the tool select input.
     var tool_select = document.getElementById('dtool');
     if (!tool_select) {
       alert('Error: failed to get the dtool element!');
@@ -116,7 +121,8 @@ window.addEventListener('load', function () {
   tools.pencil = function () {
     var tool = this;
     this.started = false;
-
+    // set line color
+    context.strokeStyle = '#ff0000';
     // This is called when you start holding down the mouse button.
     // This starts the pencil drawing.
     this.mousedown = function (ev) {
@@ -188,7 +194,8 @@ window.addEventListener('load', function () {
   tools.line = function () {
     var tool = this;
     this.started = false;
-
+    // set line color
+    context.strokeStyle = '#ff0000';
     this.mousedown = function (ev) {
       tool.started = true;
       tool.x0 = ev._x;
