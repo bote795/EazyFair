@@ -6,6 +6,7 @@
 //custom thickness of line
 //custom color of line
 //save to DB
+//automatically pick up lines from drawing by a specific area choosen 
 
 
 // Keep everything in anonymous function, called on window load.

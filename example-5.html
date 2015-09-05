@@ -15,7 +15,11 @@
         <option value="rect">Rectangle</option>
         <option value="pencil">Pencil</option>
     </select></label></p>
-
+    <label>Color: <select id="dtcolor">
+        <option value="green">Green</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+    </select></label>
     <div id="container">
       <canvas id="imageView" width="400" height="300">
         <p>Unfortunately, your browser is currently unsupported by our web
@@ -28,6 +32,10 @@
           href="http://www.konqueror.org">Konqueror</a>.</p>
       </canvas>
     </div>
+    <form action="demo_form.asp">
+      Group Name: <input type="text" name="name"><br>
+      <input type="submit" value="Save Group">
+    </form>
 
     <script type="text/javascript" src="example-5.js"></script>
   </body>
