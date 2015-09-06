@@ -8,6 +8,7 @@
 //save to DB
 //automatically pick up lines from drawing by a specific area choosen 
 
+  var shapesHistoryManager = new ShapesHistoryManager();
 
 // Keep everything in anonymous function, called on window load.
 if(window.addEventListener) {
@@ -118,6 +119,7 @@ window.addEventListener('load', function () {
   // This object holds the implementation of each drawing tool.
   var tools = {};
 
+
   // The drawing pencil.
   tools.pencil = function () {
     var tool = this;
@@ -129,6 +131,7 @@ window.addEventListener('load', function () {
     this.mousedown = function (ev) {
         context.beginPath();
         context.moveTo(ev._x, ev._y);
+        shapesHistoryManager.add(0,ev._x , ev._y);
         tool.started = true;
     };
 
@@ -138,6 +141,7 @@ window.addEventListener('load', function () {
     this.mousemove = function (ev) {
       if (tool.started) {
         context.lineTo(ev._x, ev._y);
+        shapesHistoryManager.add(0,ev._x , ev._y);
         context.stroke();
       }
     };
@@ -180,6 +184,7 @@ window.addEventListener('load', function () {
       }
 
       context.strokeRect(x, y, w, h);
+      shapesHistoryManager.add(1,x,y,w,h);
     };
 
     this.mouseup = function (ev) {
@@ -212,7 +217,9 @@ window.addEventListener('load', function () {
 
       context.beginPath();
       context.moveTo(tool.x0, tool.y0);
+      shapesHistoryManager.add(2,tool.x0, tool.y0);
       context.lineTo(ev._x,   ev._y);
+      shapesHistoryManager.add(2,ev._x, ev._y);
       context.stroke();
       context.closePath();
     };
@@ -229,6 +236,13 @@ window.addEventListener('load', function () {
   init();
 
 }, false); }
+
+
+ function load () {
+   event.preventDefault();
+   shapesHistoryManager.save();
+   //clear History
+ }
 
 // vim:set spell spl=en fo=wan1croql tw=80 ts=2 sw=2 sts=2 sta et ai cin fenc=utf-8 ff=unix:
 
