@@ -3,9 +3,9 @@ var DatabaseManager = function() {
 
 //{IMAGE, SHAPE, X, Y, Radiuss, COLOR , LINEWEIGHT}
 DatabaseManager.prototype.save = function(drawingObject){
-	var server= "http://45.79.154.181:3000/add";
+	var server= "http://45.79.154.181:3000//add";
 	$.ajax({
-	type: 'POST', // added,
+	type: 'jsonp', // added,
 	url: server,
 	data: JSON.stringify(drawingObject),
 	success: function (data) {
