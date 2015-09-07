@@ -5,7 +5,7 @@ var DatabaseManager = function() {
 DatabaseManager.prototype.save = function(drawingObject){
 	var server= "http://45.79.154.181:3000/add";
 	$.ajax({
-	type: 'jsonp', // added,
+	dataType: 'POST', // added,
 	url: server,
 	data: JSON.stringify(drawingObject),
 	success: function (data) {
