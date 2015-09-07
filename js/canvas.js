@@ -131,7 +131,7 @@ window.addEventListener('load', function () {
     this.mousedown = function (ev) {
         context.beginPath();
         context.moveTo(ev._x, ev._y);
-        shapesHistoryManager.add(0,ev._x , ev._y);
+        shapesHistoryManager.add([0,ev._x , ev._y]);
         tool.started = true;
     };
 
@@ -141,7 +141,7 @@ window.addEventListener('load', function () {
     this.mousemove = function (ev) {
       if (tool.started) {
         context.lineTo(ev._x, ev._y);
-        shapesHistoryManager.add(0,ev._x , ev._y);
+        shapesHistoryManager.add([0,ev._x , ev._y]);
         context.stroke();
       }
     };
@@ -184,7 +184,7 @@ window.addEventListener('load', function () {
       }
 
       context.strokeRect(x, y, w, h);
-      shapesHistoryManager.add(1,x,y,w,h);
+      shapesHistoryManager.add([1,x,y,w,h]);
     };
 
     this.mouseup = function (ev) {
@@ -217,9 +217,9 @@ window.addEventListener('load', function () {
 
       context.beginPath();
       context.moveTo(tool.x0, tool.y0);
-      shapesHistoryManager.add(2,tool.x0, tool.y0);
+      shapesHistoryManager.add([2,tool.x0, tool.y0)];
       context.lineTo(ev._x,   ev._y);
-      shapesHistoryManager.add(2,ev._x, ev._y);
+      shapesHistoryManager.add([2,ev._x, ev._y]);
       context.stroke();
       context.closePath();
     };

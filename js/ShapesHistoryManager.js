@@ -17,7 +17,12 @@ ShapesHistoryManager.prototype.save = function(){
 	while(this.queue.length != 0)
 	{
 		var temp = this.queue.shift();
-
-		databaseManager.shapeSave(temp);
+		switch(temp.length)
+		{
+			case 3:
+				databaseManager.shapeSave(temp[0], temp[1], temp[2]); break;
+			case 4:
+				databaseManager.shapeSave(temp[0], temp[1], temp[2], temp[3]); break;
+		}
 	}	
 }
