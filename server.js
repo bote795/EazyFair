@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express'),
+    cors = require('cors'),
     app = express();
 // Retrieve
   Db = require('mongodb').Db,
@@ -14,6 +15,7 @@ var express = require('express');
   }
 });
 */
+app.use(cors());
 app.get('/', function(req, res){
     res.send('Hello World');
 });
