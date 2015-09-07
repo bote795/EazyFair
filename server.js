@@ -27,7 +27,7 @@ app.get('/add', function(req, res){
       console.log("insertion");
     }
     });
-    res.send('sucess');
+    res.send('{"msg": "sucess"}');
 });
 
 
