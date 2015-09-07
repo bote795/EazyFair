@@ -20,13 +20,14 @@ app.get('/', function(req, res){
 app.get('/add', function(req, res){
     db.open(function(err, p_db) {
       if(!err){
+      console.log(req);
       var table = db.collection("test");
       table.insert({"name":"food"});  
       p_db.close();
       console.log("insertion");
     }
     });
-    res.jsonp('sucess');
+    res.send('sucess');
 });
 
 
